@@ -1,14 +1,12 @@
-<title>Üslü Sayılar - Eğlenceli Konu Anlatım Föyü</title>
+<title>Üslü Sayılar - Ders Anlatım Föyü</title>
 <style>
   :root{
-    --yellow:#ffd166;
-    --yellow-dark:#e6a916;
-    --coral:#ff8a80;
-    --coral-dark:#e2564c;
-    --teal:#4ecdc4;
-    --teal-dark:#2a9d8f;
-    --blue:#6fa8dc;
-    --blue-dark:#3d6fa8;
+    --info:#ffd166;
+    --info-dark:#e6a916;
+    --info-bg:#fff3d6;
+    --soru:#6fa8dc;
+    --soru-dark:#2f5f96;
+    --soru-bg:#e8f2fc;
     --ink:#3a3226;
     --paper:#fffdf7;
     --grid:#d7e8f7;
@@ -37,73 +35,38 @@
     top:0;
     bottom:0;
     width:3px;
-    background:var(--coral);
-    opacity:0.45;
+    background:var(--soru-dark);
+    opacity:0.35;
     border-radius:2px;
   }
 
   /* ---- Header ---- */
-  header{
-    display:flex;
-    align-items:center;
-    gap:18px;
-    margin-bottom:8px;
-  }
-  header .owl{ flex:0 0 auto; width:96px; height:96px; }
-  header .title-wrap{ flex:1; }
+  header{ margin-bottom:26px; }
   h1.main-title{
     font-size:2.3rem;
     margin:0;
-    color:var(--coral-dark);
-    text-shadow:2px 2px 0 var(--yellow);
+    color:var(--soru-dark);
+    text-shadow:2px 2px 0 var(--info);
     transform:rotate(-1deg);
   }
   p.subtitle{
     margin:4px 0 0;
     font-size:1.05rem;
-    color:var(--blue-dark);
+    color:var(--soru-dark);
     font-weight:bold;
-  }
-
-  .speech-bubble{
-    position:relative;
-    background:#fff;
-    border:3px solid var(--blue);
-    border-radius:20px;
-    padding:14px 20px;
-    margin:18px 0 30px 116px;
-    max-width:560px;
-    font-size:1rem;
-    box-shadow:3px 3px 0 rgba(0,0,0,0.06);
-  }
-  .speech-bubble::before{
-    content:"";
-    position:absolute;
-    left:-22px;
-    top:18px;
-    border:12px solid transparent;
-    border-right-color:var(--blue);
-  }
-  .speech-bubble::after{
-    content:"";
-    position:absolute;
-    left:-17px;
-    top:18px;
-    border:9px solid transparent;
-    border-right-color:#fff;
   }
 
   /* ---- Table of contents ---- */
   nav.toc{
     background:#fff;
-    border:3px dashed var(--blue);
+    border:3px dashed var(--soru);
     border-radius:20px;
     padding:18px 22px;
     margin:0 0 40px;
   }
   nav.toc h2{
     margin:0 0 12px;
-    color:var(--blue-dark);
+    color:var(--soru-dark);
     font-size:1.15rem;
   }
   nav.toc ul{
@@ -117,24 +80,21 @@
   nav.toc a{
     display:inline-block;
     text-decoration:none;
-    color:var(--ink);
+    color:var(--soru-dark);
     font-size:0.88rem;
     font-weight:bold;
-    background:var(--yellow);
-    border:2px solid var(--yellow-dark);
+    background:var(--soru-bg);
+    border:2px solid var(--soru);
     border-radius:14px;
     padding:6px 14px;
   }
-  nav.toc li:nth-child(2n) a{ background:var(--teal); border-color:var(--teal-dark); }
-  nav.toc li:nth-child(3n) a{ background:#bcdcf7; border-color:var(--blue); }
-  nav.toc li:nth-child(4n) a{ background:var(--coral); border-color:var(--coral-dark); color:#fff; }
 
   /* ---- Section ---- */
   section.topic{ margin-bottom:34px; page-break-inside:avoid; }
   h2.section-title{
     display:inline-block;
-    background:var(--yellow);
-    border:3px solid var(--yellow-dark);
+    background:var(--info);
+    border:3px solid var(--info-dark);
     border-radius:16px 4px 16px 4px;
     padding:8px 22px;
     font-size:1.3rem;
@@ -145,17 +105,15 @@
 
   .card{
     position:relative;
-    border-radius:18px 18px 22px 6px;
+    border-radius:16px;
     padding:16px 22px;
-    margin-bottom:20px;
-    box-shadow:3px 4px 0 rgba(0,0,0,0.08);
+    margin-bottom:18px;
+    box-shadow:3px 4px 0 rgba(0,0,0,0.06);
     border:3px solid transparent;
     page-break-inside:avoid;
   }
-  .card.tanim{ background:#fff3d6; border-color:var(--yellow-dark); transform:rotate(-0.4deg); }
-  .card.kural{ background:#e6f3ff; border-color:var(--blue); transform:rotate(0.4deg); }
-  .card.ornek{ background:#e3faf6; border-color:var(--teal-dark); transform:rotate(-0.3deg); }
-  .card.alistirma{ background:#ffe8e6; border-color:var(--coral-dark); transform:rotate(0.3deg); }
+  .card.bilgi{ background:var(--info-bg); border-color:var(--info-dark); }
+  .card.soru{ background:var(--soru-bg); border-color:var(--soru-dark); }
 
   .card .tag{
     display:inline-block;
@@ -167,17 +125,24 @@
     padding:3px 12px;
     margin-bottom:8px;
   }
-  .card.tanim .tag{ color:var(--yellow-dark); }
-  .card.kural .tag{ color:var(--blue-dark); }
-  .card.ornek .tag{ color:var(--teal-dark); }
-  .card.alistirma .tag{ color:var(--coral-dark); }
+  .card.bilgi .tag{ color:var(--info-dark); }
+  .card.soru .tag{ color:var(--soru-dark); }
+
+  .kaynak{
+    float:right;
+    font-size:0.72rem;
+    color:var(--soru-dark);
+    opacity:0.65;
+    font-weight:bold;
+    margin-top:4px;
+  }
 
   .formula{
     text-align:center;
     font-size:1.3rem;
     font-weight:bold;
     margin:12px 0;
-    color:var(--blue-dark);
+    color:var(--soru-dark);
   }
   sup{ font-size:0.7em; }
 
@@ -188,33 +153,36 @@
     font-size:0.85rem;
     margin-top:-4px;
   }
-  .label-callout span.taban{ color:var(--coral-dark); font-weight:bold; }
-  .label-callout span.us{ color:var(--teal-dark); font-weight:bold; }
+  .label-callout span.taban{ color:var(--soru-dark); font-weight:bold; }
+  .label-callout span.us{ color:var(--info-dark); font-weight:bold; }
 
-  ol.steps{ margin:10px 0 4px; padding-left:24px; }
-  ol.steps li{ margin-bottom:6px; }
-  ol.practice{ margin:8px 0 0; padding-left:24px; }
-  ol.practice li{ margin-bottom:8px; }
-
-  details.answers{ margin-top:12px; }
-  details.answers summary{
-    cursor:pointer;
-    display:inline-block;
-    background:var(--coral);
-    color:#fff;
+  .options{
+    display:flex;
+    flex-wrap:wrap;
+    gap:12px 22px;
+    margin:12px 0 4px;
     font-weight:bold;
-    border-radius:14px;
-    padding:6px 16px;
-    list-style:none;
+    font-size:1.02rem;
   }
-  details.answers summary::-webkit-details-marker{ display:none; }
-  details.answers[open] summary{ background:var(--coral-dark); }
-  details.answers .answer-text{
-    margin-top:8px;
-    background:rgba(255,255,255,0.6);
-    border-radius:10px;
-    padding:8px 14px;
-    font-size:0.92rem;
+
+  .solve-area{
+    margin-top:16px;
+    border:2px dashed var(--soru-dark);
+    border-radius:12px;
+    min-height:130px;
+    position:relative;
+    background-image: repeating-linear-gradient(#ffffff 0 27px, #dce9f7 27px 28px);
+  }
+  .solve-area::before{
+    content:"✏️ Çözüm Alanı";
+    position:absolute;
+    top:6px;
+    left:12px;
+    font-size:0.72rem;
+    color:var(--soru-dark);
+    opacity:0.6;
+    text-transform:uppercase;
+    letter-spacing:0.05em;
   }
 
   .badge-row{
@@ -224,32 +192,31 @@
     justify-content:center;
     margin-top:22px;
   }
-  .badge-row .medal{ width:64px; height:64px; flex:0 0 auto; }
+  .badge-row .medal{ width:60px; height:60px; flex:0 0 auto; }
   .badge-row p{
-    font-size:1.05rem;
+    font-size:1rem;
     font-weight:bold;
-    color:var(--teal-dark);
+    color:var(--soru-dark);
     margin:0;
-    transform:rotate(-1deg);
   }
 
   .finale{
     text-align:center;
     margin-top:50px;
     padding:26px 20px;
-    background:#fff3d6;
-    border:4px dashed var(--yellow-dark);
+    background:var(--info-bg);
+    border:4px dashed var(--info-dark);
     border-radius:26px;
   }
   .finale .trophy{ width:110px; height:110px; }
   .finale h2{
-    color:var(--coral-dark);
+    color:var(--soru-dark);
     font-size:1.6rem;
     margin:10px 0 4px;
-    text-shadow:2px 2px 0 var(--yellow);
+    text-shadow:2px 2px 0 var(--info);
   }
   .finale p{
-    color:var(--blue-dark);
+    color:var(--soru-dark);
     font-weight:bold;
     font-size:1.05rem;
     margin:0;
@@ -275,378 +242,319 @@
   <div class="margin-line"></div>
 
   <header>
-    <svg class="owl" viewBox="0 0 200 200" xmlns="http://www.w3.org/2000/svg">
-      <ellipse cx="60" cy="130" rx="24" ry="15" fill="#8c6b4f" transform="rotate(-25 60 130)"/>
-      <ellipse cx="140" cy="130" rx="24" ry="15" fill="#8c6b4f" transform="rotate(25 140 130)"/>
-      <polygon points="70,45 80,15 92,50" fill="#8c6b4f"/>
-      <polygon points="130,45 120,15 108,50" fill="#8c6b4f"/>
-      <ellipse cx="100" cy="115" rx="62" ry="68" fill="#a9835f"/>
-      <ellipse cx="100" cy="125" rx="34" ry="44" fill="#f6e9d3"/>
-      <circle cx="80" cy="95" r="24" fill="#ffffff"/>
-      <circle cx="120" cy="95" r="24" fill="#ffffff"/>
-      <circle cx="80" cy="97" r="10" fill="#3a3226"/>
-      <circle cx="120" cy="97" r="10" fill="#3a3226"/>
-      <circle cx="83" cy="93" r="3" fill="#ffffff"/>
-      <circle cx="123" cy="93" r="3" fill="#ffffff"/>
-      <path d="M62 80 Q80 68 98 80" stroke="#3a3226" stroke-width="4" fill="none" stroke-linecap="round"/>
-      <path d="M102 80 Q120 68 138 80" stroke="#3a3226" stroke-width="4" fill="none" stroke-linecap="round"/>
-      <polygon points="94,108 106,108 100,122" fill="#f4a340"/>
-      <ellipse cx="88" cy="170" rx="8" ry="5" fill="#f4a340"/>
-      <ellipse cx="112" cy="170" rx="8" ry="5" fill="#f4a340"/>
-    </svg>
-    <div class="title-wrap">
-      <h1 class="main-title">Üslü Sayılar</h1>
-      <p class="subtitle">Sayılarla Eğlenceli Bir Yolculuk! ✨</p>
-    </div>
+    <h1 class="main-title">Üslü Sayılar</h1>
+    <p class="subtitle">Ders Anlatım Föyü</p>
   </header>
 
-  <div class="speech-bubble">
-    Merhaba! Ben Baykuş 🦉 Bu föyde birlikte <b>üslü sayıları</b> keşfedeceğiz.
-    Her durakta bir kural öğrenip birlikte bir örnek çözeceğiz, sonra sıra sana gelecek. Hazırsan başlayalım!
-  </div>
-
   <nav class="toc">
-    <h2>🗺️ Maceramızın Durakları</h2>
+    <h2>İçindekiler</h2>
     <ul>
       <li><a href="#tanim">1. Üslü Sayı Ne Demek?</a></li>
-      <li><a href="#negatif-taban">2. Eksili Sayılar</a></li>
-      <li><a href="#negatif-us">3. Üs Eksi Olunca</a></li>
-      <li><a href="#ussun-ussu">4. Kutu İçinde Kutu</a></li>
-      <li><a href="#carpma-bolme-ayni-taban">5. Aynı Taban Kardeşliği</a></li>
-      <li><a href="#carpma-bolme-ayni-us">6. Takım Çalışması</a></li>
-      <li><a href="#toplama-cikarma">7. Toplayabilir miyiz?</a></li>
-      <li><a href="#ax-esittir-1">8. Sonuç Hep 1 mi?</a></li>
+      <li><a href="#negatif-taban">2. Negatif Tabanlı Üslü Sayılar</a></li>
+      <li><a href="#negatif-us">3. Negatif Üslü Sayılar</a></li>
+      <li><a href="#ussun-ussu">4. Üssün Üssü</a></li>
+      <li><a href="#carpma-bolme-ayni-taban">5. Aynı Tabanda Çarpma - Bölme</a></li>
+      <li><a href="#carpma-bolme-ayni-us">6. Aynı Üste Çarpma - Bölme</a></li>
+      <li><a href="#toplama-cikarma">7. Toplama - Çıkarma</a></li>
+      <li><a href="#ax-esittir-1">8. A<sup>x</sup> = 1 Olma Durumları</a></li>
     </ul>
   </nav>
 
   <section class="topic" id="tanim">
-    <h2 class="section-title">1. Üslü Sayı Ne Demek? 🚀</h2>
-    <div class="card tanim">
+    <h2 class="section-title">1. Üslü Sayı Ne Demek?</h2>
+    <div class="card bilgi">
       <span class="tag">TANIM</span>
-      <p>Bir sayıyı defalarca kendisiyle çarpmak mı istiyorsun? İşte tam bunun için <b>üslü sayılar</b> var! a bir gerçel sayı, n de a'yı kaç kere çarpacağımızı gösteren küçük bir sayı (üs) olsun.</p>
+      <p>a bir gerçel sayı ve n pozitif bir tam sayı olmak üzere, a<sup>n</sup> ifadesi, a sayısının kendisiyle n defa çarpılması anlamına gelir. a'ya <b>taban</b>, n'ye <b>üs (kuvvet)</b> denir.</p>
     </div>
-    <div class="card kural">
+    <div class="card bilgi">
       <span class="tag">KURAL</span>
       <div class="formula">a<sup>n</sup> = a × a × a × ... × a &nbsp; (n tane)</div>
       <div class="label-callout"><span class="taban">↑ taban</span><span class="us">↑ üs (kuvvet)</span></div>
     </div>
-    <div class="card ornek">
-      <span class="tag">HADİ BİRLİKTE ÇÖZELİM 🔍</span>
-      <p><b>2<sup>5</sup></b> kaç eder, bulalım mı?</p>
-      <ol class="steps">
-        <li>2<sup>5</sup> demek, 2'yi 5 kere kendisiyle çarpmak demektir: 2 × 2 × 2 × 2 × 2</li>
-        <li>Adım adım çarpalım: 2×2=4, 4×2=8, 8×2=16, 16×2=32</li>
-        <li>Sonuç: <b>32</b> 🎉</li>
-      </ol>
-    </div>
-    <div class="card alistirma">
-      <span class="tag">SIRA SENDE! 💪</span>
-      <ol class="practice">
-        <li>3<sup>4</sup> kaç eder?</li>
-        <li>(1/2)<sup>3</sup> kaç eder?</li>
-        <li>10<sup>2</sup> kaç eder?</li>
-      </ol>
-      <details class="answers"><summary>Cevapları Göster 👀</summary><div class="answer-text">1) 81 &nbsp; 2) 1/8 &nbsp; 3) 100</div></details>
-    </div>
-    <div class="badge-row">
-      <svg class="medal" viewBox="0 0 100 100" xmlns="http://www.w3.org/2000/svg">
-        <polygon points="35,55 20,90 40,80 50,95 60,80 80,90 65,55" fill="#e2564c"/>
-        <circle cx="50" cy="45" r="35" fill="#ffd166" stroke="#e6a916" stroke-width="4"/>
-        <polygon points="50,22 56,38 73,38 59,48 64,65 50,55 36,65 41,48 27,38 44,38" fill="#fff" stroke="#e6a916" stroke-width="1.5"/>
-      </svg>
-      <p>Harika iş! Bu konuyu tamamladın ⭐⭐⭐</p>
-    </div>
   </section>
 
   <section class="topic" id="negatif-taban">
-    <h2 class="section-title">2. Eksili Sayılar Üslerle Buluşunca 🙈</h2>
-    <div class="card tanim">
+    <h2 class="section-title">2. Negatif Tabanlı Üslü Sayılar</h2>
+    <div class="card bilgi">
       <span class="tag">TANIM</span>
-      <p>Taban (üssü alınan sayı) eksi bir sayıysa dikkatli ol! Eksi işaretinin <b>parantez içinde olup olmaması</b> sonucu tamamen değiştirebilir.</p>
+      <p>Taban negatif bir sayı olduğunda, eksi işaretinin parantez içinde olup olmaması sonucu değiştirir.</p>
     </div>
-    <div class="card kural">
+    <div class="card bilgi">
       <span class="tag">KURAL</span>
       <div class="formula">(-a)<sup>n</sup>: n çift → sonuç <b>pozitif</b>, n tek → sonuç <b>negatif</b></div>
       <div class="formula">-a<sup>n</sup> (parantezsiz): önce üs alınır, sonra başa eksi konur → sonuç her zaman <b>negatif</b></div>
       <p style="text-align:center;margin:4px 0 0;">Örnek: (-3)<sup>3</sup> = -27, (-3)<sup>4</sup> = +81 &nbsp;|&nbsp; -3<sup>3</sup> = -27, -3<sup>4</sup> = -81</p>
     </div>
-    <div class="card ornek">
-      <span class="tag">HADİ BİRLİKTE ÇÖZELİM 🔍</span>
-      <p><b>(-3<sup>2</sup>) - (-2<sup>0</sup>) + (-5)<sup>2</sup></b> işleminin sonucunu bulalım.</p>
-      <ol class="steps">
-        <li>-3<sup>2</sup> = -(3<sup>2</sup>) = -9 (parantez taban etrafında değil; önce üs alınır)</li>
-        <li>-2<sup>0</sup> = -(2<sup>0</sup>) = -1, önündeki eksi ile: -(-1) = +1</li>
-        <li>(-5)<sup>2</sup> = 25 (taban parantez içinde -5, çift üs → pozitif)</li>
-        <li>Toplam: -9 + 1 + 25 = <b>17</b> 🎉</li>
-      </ol>
+
+    <div class="card soru">
+      <span class="kaynak">ÜçDörtBeş Yayınları</span>
+      <span class="tag">SORU 1</span>
+      <p><b>(-3<sup>2</sup>) - (-2<sup>0</sup>) + (-5)<sup>2</sup></b> işleminin sonucu kaçtır?</p>
+      <div class="options"><span>A) 35</span><span>B) 19</span><span>C) 25</span><span>D) 26</span><span>E) 17</span></div>
+      <div class="solve-area"></div>
     </div>
-    <div class="card alistirma">
-      <span class="tag">SIRA SENDE! 💪</span>
-      <ol class="practice">
-        <li>(-2)<sup>4</sup> kaç eder?</li>
-        <li>-2<sup>4</sup> kaç eder?</li>
-        <li>(-4<sup>2</sup>) + (-3)<sup>3</sup> kaç eder?</li>
-      </ol>
-      <details class="answers"><summary>Cevapları Göster 👀</summary><div class="answer-text">1) 16 &nbsp; 2) -16 &nbsp; 3) -43</div></details>
+
+    <div class="card soru">
+      <span class="kaynak">Karekök Yayınları</span>
+      <span class="tag">SORU 2</span>
+      <p>a sıfırdan farklı bir gerçel (reel) sayı olmak üzere,</p>
+      <div class="formula" style="font-size:1.1rem;">[-a<sup>2</sup>·(-a)<sup>3</sup> + 4(-a)<sup>2</sup>·(-a<sup>3</sup>)] / [(-a)<sup>2</sup>·(-a<sup>2</sup>)]</div>
+      <p>ifadesinin değeri kaçtır?</p>
+      <div class="options"><span>A) -2a</span><span>B) -a</span><span>C) a</span><span>D) 2a</span><span>E) 3a</span></div>
+      <div class="solve-area"></div>
     </div>
+
     <div class="badge-row">
       <svg class="medal" viewBox="0 0 100 100" xmlns="http://www.w3.org/2000/svg">
         <polygon points="35,55 20,90 40,80 50,95 60,80 80,90 65,55" fill="#e2564c"/>
-        <circle cx="50" cy="45" r="35" fill="#4ecdc4" stroke="#2a9d8f" stroke-width="4"/>
-        <polygon points="50,22 56,38 73,38 59,48 64,65 50,55 36,65 41,48 27,38 44,38" fill="#fff" stroke="#2a9d8f" stroke-width="1.5"/>
+        <circle cx="50" cy="45" r="35" fill="#ffd166" stroke="#e6a916" stroke-width="4"/>
+        <polygon points="50,22 56,38 73,38 59,48 64,65 50,55 36,65 41,48 27,38 44,38" fill="#fff" stroke="#e6a916" stroke-width="1.5"/>
       </svg>
-      <p>Süpersin! Eksili sayıları çözdün 🌟</p>
+      <p>Bu bölümün soruları videoda çözülmeye hazır! 🎥</p>
     </div>
   </section>
 
   <section class="topic" id="negatif-us">
-    <h2 class="section-title">3. Üs Eksi Olunca Ne Olur? 🔄</h2>
-    <div class="card tanim">
+    <h2 class="section-title">3. Negatif Üslü Sayılar</h2>
+    <div class="card bilgi">
       <span class="tag">TANIM</span>
-      <p>Üs negatif bir sayı olduğunda korkma! Bu sadece "<b>tersini al</b>" demek. Taban çarpmaya göre ters çevrilir ve üs pozitif yapılır.</p>
+      <p>Negatif üslü bir ifade, tabanın çarpmaya göre tersi (resiprok) alınarak pozitif üsle yazılabilir.</p>
     </div>
-    <div class="card kural">
+    <div class="card bilgi">
       <span class="tag">KURAL</span>
       <div class="formula">a<sup>-1</sup> = 1/a &nbsp;&nbsp;&nbsp; a<sup>-n</sup> = 1/a<sup>n</sup> &nbsp; (a ≠ 0)</div>
       <div class="formula">(a/b)<sup>-1</sup> = b/a &nbsp;&nbsp;&nbsp; (a/b)<sup>-n</sup> = (b/a)<sup>n</sup></div>
     </div>
-    <div class="card ornek">
-      <span class="tag">HADİ BİRLİKTE ÇÖZELİM 🔍</span>
-      <p>m ≠ 0 için <b>(-m)<sup>5</sup> · (-m<sup>2</sup>) · (-m)<sup>-4</sup></b> ifadesini sadeleştirelim.</p>
-      <ol class="steps">
-        <li>(-m)<sup>5</sup> = -m<sup>5</sup> (üs tek, sonuç negatif)</li>
-        <li>(-m)<sup>-4</sup> = 1/(-m)<sup>4</sup> = 1/m<sup>4</sup> (üs çift, sonuç pozitif)</li>
-        <li>İfade: (-m<sup>5</sup>) · (-m<sup>2</sup>) · (1/m<sup>4</sup>) = (m<sup>5</sup> · m<sup>2</sup>) / m<sup>4</sup> (negatif × negatif = pozitif)</li>
-        <li>= m<sup>5+2-4</sup> = <b>m<sup>3</sup></b> 🎉</li>
-      </ol>
+
+    <div class="card soru">
+      <span class="kaynak">ÜçDörtBeş Yayınları</span>
+      <span class="tag">SORU 3</span>
+      <p><b>(-m)<sup>5</sup> · (-m<sup>2</sup>) · (-m)<sup>-4</sup></b> ifadesinin eşiti aşağıdakilerden hangisidir?</p>
+      <div class="options"><span>A) -m<sup>3</sup></span><span>B) -m<sup>-3</sup></span><span>C) m<sup>-1</sup></span><span>D) m</span><span>E) m<sup>3</sup></span></div>
+      <div class="solve-area"></div>
     </div>
-    <div class="card alistirma">
-      <span class="tag">SIRA SENDE! 💪</span>
-      <ol class="practice">
-        <li>5<sup>-2</sup> kaç eder?</li>
-        <li>(2/3)<sup>-2</sup> kaç eder?</li>
-        <li>(-x)<sup>-3</sup> = ? (x ≠ 0)</li>
-      </ol>
-      <details class="answers"><summary>Cevapları Göster 👀</summary><div class="answer-text">1) 1/25 &nbsp; 2) 9/4 &nbsp; 3) -1/x<sup>3</sup></div></details>
+
+    <div class="card soru">
+      <span class="kaynak">ÜçDörtBeş Yayınları</span>
+      <span class="tag">SORU 4</span>
+      <div class="formula" style="font-size:1.1rem;">(-a<sup>-2</sup>) · a<sup>4</sup> / [(-a)<sup>2</sup> · (-a)<sup>3</sup>]</div>
+      <p>ifadesinin eşiti aşağıdakilerden hangisidir?</p>
+      <div class="options"><span>A) a<sup>-5</sup></span><span>B) a<sup>-3</sup></span><span>C) a<sup>-2</sup></span><span>D) -a<sup>-3</sup></span><span>E) -a<sup>-5</sup></span></div>
+      <div class="solve-area"></div>
     </div>
+
     <div class="badge-row">
       <svg class="medal" viewBox="0 0 100 100" xmlns="http://www.w3.org/2000/svg">
         <polygon points="35,55 20,90 40,80 50,95 60,80 80,90 65,55" fill="#e2564c"/>
-        <circle cx="50" cy="45" r="35" fill="#6fa8dc" stroke="#3d6fa8" stroke-width="4"/>
-        <polygon points="50,22 56,38 73,38 59,48 64,65 50,55 36,65 41,48 27,38 44,38" fill="#fff" stroke="#3d6fa8" stroke-width="1.5"/>
+        <circle cx="50" cy="45" r="35" fill="#ffd166" stroke="#e6a916" stroke-width="4"/>
+        <polygon points="50,22 56,38 73,38 59,48 64,65 50,55 36,65 41,48 27,38 44,38" fill="#fff" stroke="#e6a916" stroke-width="1.5"/>
       </svg>
-      <p>Negatif üsleri de çözdün, devam! 🚀</p>
+      <p>Bu bölümün soruları videoda çözülmeye hazır! 🎥</p>
     </div>
   </section>
 
   <section class="topic" id="ussun-ussu">
-    <h2 class="section-title">4. Kutu İçinde Kutu: Üssün Üssü 📦</h2>
-    <div class="card tanim">
-      <span class="tag">TANIM</span>
-      <p>Bazen bir üslü sayının kendisi de üs alır — sanki bir kutunun içine başka bir kutu koymuşuz gibi! Bu durumda üsler çarpılır.</p>
-    </div>
-    <div class="card kural">
+    <h2 class="section-title">4. Üssün Üssü</h2>
+    <div class="card bilgi">
       <span class="tag">KURAL</span>
       <div class="formula">(a<sup>x</sup>)<sup>y</sup> = a<sup>x·y</sup></div>
     </div>
-    <div class="card ornek">
-      <span class="tag">HADİ BİRLİKTE ÇÖZELİM 🔍</span>
-      <p><b>[4<sup>-2</sup>]<sup>-3</sup></b> ifadesini 2'nin kuvveti olarak yazalım.</p>
-      <ol class="steps">
-        <li>[4<sup>-2</sup>]<sup>-3</sup> = 4<sup>(-2)·(-3)</sup> = 4<sup>6</sup></li>
-        <li>4 = 2<sup>2</sup> olduğundan: 4<sup>6</sup> = (2<sup>2</sup>)<sup>6</sup> = 2<sup>12</sup></li>
-        <li>Sonuç: <b>2<sup>12</sup></b> 🎉</li>
-      </ol>
+
+    <div class="card soru">
+      <span class="kaynak">ÜçDörtBeş Yayınları</span>
+      <span class="tag">SORU 5</span>
+      <div class="formula" style="font-size:1.1rem;">[4<sup>-2</sup>]<sup>-3</sup></div>
+      <p>ifadesinin eşiti aşağıdakilerden hangisidir?</p>
+      <div class="options"><span>A) 2<sup>16</sup></span><span>B) 2<sup>12</sup></span><span>C) 2<sup>6</sup></span><span>D) 2<sup>-6</sup></span><span>E) 2<sup>-12</sup></span></div>
+      <div class="solve-area"></div>
     </div>
-    <div class="card alistirma">
-      <span class="tag">SIRA SENDE! 💪</span>
-      <ol class="practice">
-        <li>(2<sup>3</sup>)<sup>4</sup> = ? (2'nin kuvveti olarak)</li>
-        <li>[(-3)<sup>2</sup>]<sup>3</sup> kaç eder?</li>
-        <li>(x<sup>2</sup>)<sup>-3</sup> = ?</li>
-      </ol>
-      <details class="answers"><summary>Cevapları Göster 👀</summary><div class="answer-text">1) 2<sup>12</sup> &nbsp; 2) 3<sup>6</sup> = 729 &nbsp; 3) x<sup>-6</sup> = 1/x<sup>6</sup></div></details>
+
+    <div class="card soru">
+      <span class="kaynak">ÜçDörtBeş Yayınları</span>
+      <span class="tag">SORU 6</span>
+      <div class="formula" style="font-size:1.1rem;">(3<sup>-2</sup> · 3<sup>-2</sup> · 3<sup>-2</sup>)<sup>2</sup></div>
+      <p>ifadesinin eşiti aşağıdakilerden hangisidir?</p>
+      <div class="options"><span>A) 3<sup>-16</sup></span><span>B) 3<sup>-12</sup></span><span>C) 3<sup>-8</sup></span><span>D) 3<sup>8</sup></span><span>E) 3<sup>12</sup></span></div>
+      <div class="solve-area"></div>
     </div>
+
     <div class="badge-row">
       <svg class="medal" viewBox="0 0 100 100" xmlns="http://www.w3.org/2000/svg">
         <polygon points="35,55 20,90 40,80 50,95 60,80 80,90 65,55" fill="#e2564c"/>
         <circle cx="50" cy="45" r="35" fill="#ffd166" stroke="#e6a916" stroke-width="4"/>
         <polygon points="50,22 56,38 73,38 59,48 64,65 50,55 36,65 41,48 27,38 44,38" fill="#fff" stroke="#e6a916" stroke-width="1.5"/>
       </svg>
-      <p>Kutudan kutuya zıpladın, harikasın! 🎯</p>
+      <p>Bu bölümün soruları videoda çözülmeye hazır! 🎥</p>
     </div>
   </section>
 
   <section class="topic" id="carpma-bolme-ayni-taban">
-    <h2 class="section-title">5. Aynı Taban Kardeşliği 🤝</h2>
-    <div class="card tanim">
-      <span class="tag">TANIM</span>
-      <p>Tabanları aynı olan üslü sayıları çarparken ya da bölerken, tek yapman gereken üsleri toplamak ya da çıkarmak!</p>
-    </div>
-    <div class="card kural">
+    <h2 class="section-title">5. Aynı Tabanda Çarpma - Bölme</h2>
+    <div class="card bilgi">
       <span class="tag">KURAL</span>
       <div class="formula">a<sup>x</sup> · a<sup>y</sup> = a<sup>x+y</sup></div>
       <div class="formula">a<sup>x</sup> / a<sup>y</sup> = a<sup>x-y</sup> &nbsp; (a ≠ 0)</div>
     </div>
-    <div class="card ornek">
-      <span class="tag">HADİ BİRLİKTE ÇÖZELİM 🔍</span>
-      <p><b>8<sup>8</sup> · 4<sup>4</sup> / 2<sup>2</sup></b> işleminin sonucunu 2'nin kuvveti olarak bulalım.</p>
-      <ol class="steps">
-        <li>8 = 2<sup>3</sup>, 4 = 2<sup>2</sup> olduğundan: 8<sup>8</sup> = 2<sup>24</sup>, 4<sup>4</sup> = 2<sup>8</sup></li>
-        <li>İfade: 2<sup>24</sup> · 2<sup>8</sup> / 2<sup>2</sup> = 2<sup>24+8-2</sup></li>
-        <li>Sonuç: <b>2<sup>30</sup></b> 🎉</li>
-      </ol>
-    </div>
-    <div class="card alistirma">
-      <span class="tag">SIRA SENDE! 💪</span>
-      <ol class="practice">
-        <li>3<sup>5</sup> · 3<sup>-2</sup> = ?</li>
-        <li>9<sup>3</sup> / 3<sup>4</sup> = ?</li>
-        <li>2<sup>x</sup> = 3 ise 2<sup>2x</sup> = ?</li>
-      </ol>
-      <details class="answers"><summary>Cevapları Göster 👀</summary><div class="answer-text">1) 3<sup>3</sup> = 27 &nbsp; 2) 3<sup>2</sup> = 9 &nbsp; 3) 9 (çünkü 2<sup>2x</sup> = (2<sup>x</sup>)<sup>2</sup>)</div></details>
-    </div>
-    <div class="badge-row">
-      <svg class="medal" viewBox="0 0 100 100" xmlns="http://www.w3.org/2000/svg">
-        <polygon points="35,55 20,90 40,80 50,95 60,80 80,90 65,55" fill="#e2564c"/>
-        <circle cx="50" cy="45" r="35" fill="#4ecdc4" stroke="#2a9d8f" stroke-width="4"/>
-        <polygon points="50,22 56,38 73,38 59,48 64,65 50,55 36,65 41,48 27,38 44,38" fill="#fff" stroke="#2a9d8f" stroke-width="1.5"/>
-      </svg>
-      <p>Aynı taban kardeşliğini çözdün! 🤝</p>
-    </div>
-  </section>
 
-  <section class="topic" id="carpma-bolme-ayni-us">
-    <h2 class="section-title">6. Aynı Üs, Farklı Taban: Takım Çalışması 🎯</h2>
-    <div class="card tanim">
-      <span class="tag">TANIM</span>
-      <p>Bu sefer üsler aynı ama tabanlar farklı. Onları da bir arada çarpıp bölebiliriz — sadece tabanları birleştiririz, üs hep aynı kalır!</p>
+    <div class="card soru">
+      <span class="kaynak">ÜçDörtBeş Yayınları</span>
+      <span class="tag">SORU 7</span>
+      <div class="formula" style="font-size:1.1rem;">8<sup>8</sup> · 4<sup>4</sup> / 2<sup>2</sup></div>
+      <p>işleminin sonucu kaçtır?</p>
+      <div class="options"><span>A) 2<sup>36</sup></span><span>B) 2<sup>32</sup></span><span>C) 2<sup>30</sup></span><span>D) 2<sup>28</sup></span><span>E) 2<sup>24</sup></span></div>
+      <div class="solve-area"></div>
     </div>
-    <div class="card kural">
-      <span class="tag">KURAL</span>
-      <div class="formula">a<sup>x</sup> · b<sup>x</sup> = (a·b)<sup>x</sup></div>
-      <div class="formula">(a/b)<sup>x</sup> = a<sup>x</sup> / b<sup>x</sup></div>
-    </div>
-    <div class="card ornek">
-      <span class="tag">HADİ BİRLİKTE ÇÖZELİM 🔍</span>
-      <p>Bir taşıma şirketine gelen özdeş 5 kolinin her birinde 36 kutu, her kutuda 45 makara, her makarada 100 metre iplik var. Toplam kaç metre iplik var?</p>
-      <ol class="steps">
-        <li>Toplam iplik = 5 × 36 × 45 × 100</li>
-        <li>Asal çarpanlarına ayıralım: 5 = 5, 36 = 2<sup>2</sup>·3<sup>2</sup>, 45 = 3<sup>2</sup>·5, 100 = 2<sup>2</sup>·5<sup>2</sup></li>
-        <li>Çarpım: 2<sup>2+2</sup> · 3<sup>2+2</sup> · 5<sup>1+1+2</sup> = 2<sup>4</sup> · 3<sup>4</sup> · 5<sup>4</sup></li>
-        <li>Aynı üslü olduklarından tabanlar çarpılır: (2·3·5)<sup>4</sup> = <b>30<sup>4</sup></b> metre 🎉</li>
-      </ol>
-    </div>
-    <div class="card alistirma">
-      <span class="tag">SIRA SENDE! 💪</span>
-      <ol class="practice">
-        <li>2<sup>5</sup> · 5<sup>5</sup> = ? (10'un kuvveti olarak)</li>
-        <li>6<sup>3</sup> / 2<sup>3</sup> = ?</li>
-        <li>4<sup>3</sup> · 25<sup>3</sup> = ? (10'un kuvveti olarak)</li>
-      </ol>
-      <details class="answers"><summary>Cevapları Göster 👀</summary><div class="answer-text">1) 10<sup>5</sup> &nbsp; 2) 3<sup>3</sup> = 27 &nbsp; 3) 100<sup>3</sup> = 10<sup>6</sup></div></details>
-    </div>
-    <div class="badge-row">
-      <svg class="medal" viewBox="0 0 100 100" xmlns="http://www.w3.org/2000/svg">
-        <polygon points="35,55 20,90 40,80 50,95 60,80 80,90 65,55" fill="#e2564c"/>
-        <circle cx="50" cy="45" r="35" fill="#6fa8dc" stroke="#3d6fa8" stroke-width="4"/>
-        <polygon points="50,22 56,38 73,38 59,48 64,65 50,55 36,65 41,48 27,38 44,38" fill="#fff" stroke="#3d6fa8" stroke-width="1.5"/>
-      </svg>
-      <p>Takım çalışmasını başardın! 👏</p>
-    </div>
-  </section>
 
-  <section class="topic" id="toplama-cikarma">
-    <h2 class="section-title">7. Toplayabilir miyiz, Çıkarabilir miyiz? ➕➖</h2>
-    <div class="card tanim">
-      <span class="tag">TANIM</span>
-      <p>Üslü sayıları toplarken ya da çıkarırken dikkat! Bu ancak taban ve üs <b>tıpatıp aynıysa</b> kolayca yapılabilir.</p>
+    <div class="card soru">
+      <span class="kaynak">ÜçDörtBeş Yayınları</span>
+      <span class="tag">SORU 8</span>
+      <div class="formula" style="font-size:1.1rem;">(2<sup>3</sup>)<sup>2</sup> · (4<sup>-1</sup>)<sup>-1</sup> · 8<sup>-2</sup></div>
+      <p>işleminin sonucu kaçtır?</p>
+      <div class="options"><span>A) 2<sup>4</sup></span><span>B) 2<sup>3</sup></span><span>C) 2<sup>2</sup></span><span>D) 2<sup>-1</sup></span><span>E) 2<sup>-2</sup></span></div>
+      <div class="solve-area"></div>
     </div>
-    <div class="card kural">
-      <span class="tag">KURAL</span>
-      <div class="formula">a<sup>n</sup> + a<sup>n</sup> + ... + a<sup>n</sup> (k tane) = k · a<sup>n</sup></div>
-      <p>Taban veya üsler farklıysa doğrudan toplama/çıkarma <b>yapılamaz</b>; ama sayılar aynı asal tabana çevrilebiliyorsa, ortak çarpan parantezine alınarak işlem yapılabilir.</p>
-      <p style="text-align:center;margin:4px 0 0;">Örnek: 3<sup>7</sup>+3<sup>7</sup>+3<sup>7</sup>+3<sup>7</sup> = 4·3<sup>7</sup> &nbsp;|&nbsp; 5<sup>4</sup> - 3<sup>5</sup>: farklı asal tabanlar, sadeleştirilemez</p>
+
+    <div class="card soru">
+      <span class="kaynak">ÜçDörtBeş Yayınları</span>
+      <span class="tag">SORU 9</span>
+      <p>Bir ayrıt uzunluğu <b>2<sup>4</sup> birim</b> olan bir küpün tüm yüzeylerinin alanları toplamının, tüm ayrıtlarının uzunlukları toplamına oranı kaç birimdir?</p>
+      <div class="options"><span>A) 12</span><span>B) 6</span><span>C) 8</span><span>D) 4</span><span>E) 16</span></div>
+      <div class="solve-area"></div>
     </div>
-    <div class="card ornek">
-      <span class="tag">HADİ BİRLİKTE ÇÖZELİM 🔍 (1)</span>
-      <p><b>2<sup>x+2</sup> - 2<sup>x+1</sup> + 2<sup>x</sup></b> ifadesini sadeleştirelim.</p>
-      <ol class="steps">
-        <li>Ortak çarpan 2<sup>x</sup> parantezine alınır: 2<sup>x</sup>(2<sup>2</sup> - 2<sup>1</sup> + 1)</li>
-        <li>2<sup>x</sup>(4 - 2 + 1) = 2<sup>x</sup> · 3</li>
-        <li>Sonuç: <b>3 · 2<sup>x</sup></b> 🎉</li>
-      </ol>
+
+    <div class="card soru">
+      <span class="kaynak">Karekök Yayınları</span>
+      <span class="tag">SORU 10</span>
+      <p><b>3<sup>x</sup> = 5</b> ve <b>9<sup>y</sup> = 125</b> olduğuna göre, (x+y)/(x-y) oranı kaçtır?</p>
+      <div class="options"><span>A) -5</span><span>B) -3</span><span>C) -1</span><span>D) 3</span><span>E) 5</span></div>
+      <div class="solve-area"></div>
     </div>
-    <div class="card ornek">
-      <span class="tag">HADİ BİRLİKTE ÇÖZELİM 🔍 (2)</span>
-      <p><b>8<sup>3</sup> + 4<sup>4</sup></b> ifadesini 2'nin kuvveti cinsinden yazıp sadeleştirelim.</p>
-      <ol class="steps">
-        <li>8<sup>3</sup> = 2<sup>9</sup>, 4<sup>4</sup> = 2<sup>8</sup> (ortak tabana çevrildi)</li>
-        <li>2<sup>9</sup> + 2<sup>8</sup> = 2<sup>8</sup>(2 + 1) = 3 · 2<sup>8</sup></li>
-        <li>Sonuç: <b>3 · 2<sup>8</sup> = 768</b> 🎉</li>
-      </ol>
-    </div>
-    <div class="card alistirma">
-      <span class="tag">SIRA SENDE! 💪</span>
-      <ol class="practice">
-        <li>5<sup>7</sup> + 5<sup>7</sup> + 5<sup>7</sup> = ?</li>
-        <li>3<sup>x</sup> + 3<sup>x</sup> + 3<sup>x</sup> + 3<sup>x</sup> + 3<sup>x</sup> = ?</li>
-        <li>9<sup>2</sup> - 3<sup>3</sup> sadeleştirilebilir mi? Sadeleştirip sonucu bul.</li>
-      </ol>
-      <details class="answers"><summary>Cevapları Göster 👀</summary><div class="answer-text">1) 3 · 5<sup>7</sup> &nbsp; 2) 5 · 3<sup>x</sup> &nbsp; 3) Evet; 9<sup>2</sup> = 3<sup>4</sup> olduğundan 3<sup>4</sup> - 3<sup>3</sup> = 3<sup>3</sup>(3-1) = 27 · 2 = 54</div></details>
-    </div>
+
     <div class="badge-row">
       <svg class="medal" viewBox="0 0 100 100" xmlns="http://www.w3.org/2000/svg">
         <polygon points="35,55 20,90 40,80 50,95 60,80 80,90 65,55" fill="#e2564c"/>
         <circle cx="50" cy="45" r="35" fill="#ffd166" stroke="#e6a916" stroke-width="4"/>
         <polygon points="50,22 56,38 73,38 59,48 64,65 50,55 36,65 41,48 27,38 44,38" fill="#fff" stroke="#e6a916" stroke-width="1.5"/>
       </svg>
-      <p>Toplama-çıkarma sırrını çözdün! 🔑</p>
+      <p>Bu bölümün soruları videoda çözülmeye hazır! 🎥</p>
+    </div>
+  </section>
+
+  <section class="topic" id="carpma-bolme-ayni-us">
+    <h2 class="section-title">6. Aynı Üste Çarpma - Bölme</h2>
+    <div class="card bilgi">
+      <span class="tag">KURAL</span>
+      <div class="formula">a<sup>x</sup> · b<sup>x</sup> = (a·b)<sup>x</sup></div>
+      <div class="formula">(a/b)<sup>x</sup> = a<sup>x</sup> / b<sup>x</sup></div>
+    </div>
+
+    <div class="card soru">
+      <span class="kaynak">ÜçDörtBeş Yayınları</span>
+      <span class="tag">SORU 11</span>
+      <p>Bir taşıma şirketine gelen özdeş 5 kolinin her birinin içerisinde 36 kutu, her kutuda 45 makara ve her bir makarada sarılı 100 metre iplik vardır. Buna göre, bu kolilerde toplam kaç metre iplik vardır?</p>
+      <div class="options"><span>A) 60<sup>2</sup></span><span>B) 30<sup>4</sup></span><span>C) 60<sup>4</sup></span><span>D) 120<sup>2</sup></span><span>E) 150<sup>2</sup></span></div>
+      <div class="solve-area"></div>
+    </div>
+
+    <div class="card soru">
+      <span class="kaynak">ÜçDörtBeş Yayınları</span>
+      <span class="tag">SORU 12</span>
+      <div class="formula" style="font-size:1.1rem;">6<sup>x</sup> / 2<sup>x</sup> = 9</div>
+      <p>olduğuna göre, x kaçtır?</p>
+      <div class="options"><span>A) -3</span><span>B) -2</span><span>C) -1</span><span>D) 1</span><span>E) 2</span></div>
+      <div class="solve-area"></div>
+    </div>
+
+    <div class="card soru">
+      <span class="kaynak">Karekök Yayınları</span>
+      <span class="tag">SORU 13</span>
+      <p><b>5<sup>x</sup> = 2<sup>x+1</sup></b> olduğuna göre, (4/25)<sup>x-1</sup> ifadesinin değeri kaçtır?</p>
+      <div class="options"><span>A) 4/25</span><span>B) 2/5</span><span>C) 3/4</span><span>D) 25/16</span><span>E) 9/16</span></div>
+      <div class="solve-area"></div>
+    </div>
+
+    <div class="badge-row">
+      <svg class="medal" viewBox="0 0 100 100" xmlns="http://www.w3.org/2000/svg">
+        <polygon points="35,55 20,90 40,80 50,95 60,80 80,90 65,55" fill="#e2564c"/>
+        <circle cx="50" cy="45" r="35" fill="#ffd166" stroke="#e6a916" stroke-width="4"/>
+        <polygon points="50,22 56,38 73,38 59,48 64,65 50,55 36,65 41,48 27,38 44,38" fill="#fff" stroke="#e6a916" stroke-width="1.5"/>
+      </svg>
+      <p>Bu bölümün soruları videoda çözülmeye hazır! 🎥</p>
+    </div>
+  </section>
+
+  <section class="topic" id="toplama-cikarma">
+    <h2 class="section-title">7. Toplama - Çıkarma</h2>
+    <div class="card bilgi">
+      <span class="tag">KURAL</span>
+      <p>Üslü ifadelerde toplama/çıkarma yapabilmek için taban ve üslerin <b>aynı</b> olması gerekir; bu durumda ortak çarpan parantezine alınır:</p>
+      <div class="formula">a<sup>n</sup> + a<sup>n</sup> + ... + a<sup>n</sup> (k tane) = k · a<sup>n</sup></div>
+      <p>Taban veya üsler farklıysa doğrudan toplama/çıkarma <b>yapılamaz</b>; ancak sayılar aynı asal tabana çevrilebiliyorsa, ortak çarpan parantezine alınarak işlem yapılabilir.</p>
+      <p style="text-align:center;margin:4px 0 0;">Örnek: 3<sup>7</sup>+3<sup>7</sup>+3<sup>7</sup>+3<sup>7</sup> = 4·3<sup>7</sup> &nbsp;|&nbsp; 5<sup>4</sup> - 3<sup>5</sup>: farklı asal tabanlar, sadeleştirilemez</p>
+    </div>
+
+    <div class="card soru">
+      <span class="kaynak">Karekök Yayınları</span>
+      <span class="tag">SORU 14</span>
+      <div class="formula" style="font-size:1.1rem;">2<sup>x+2</sup> - 2<sup>x+1</sup> + 2<sup>x</sup></div>
+      <p>ifadesi aşağıdakilerden hangisine eşittir?</p>
+      <div class="options"><span>A) 2<sup>x+1</sup></span><span>B) 3·2<sup>x</sup></span><span>C) 2<sup>x</sup></span><span>D) -2<sup>x-1</sup></span><span>E) -3·2<sup>x+1</sup></span></div>
+      <div class="solve-area"></div>
+    </div>
+
+    <div class="card soru">
+      <span class="kaynak">Karekök Yayınları</span>
+      <span class="tag">SORU 15</span>
+      <p><b>2<sup>x</sup> = 3</b> olduğuna göre, <b>4<sup>x+1</sup> + 8<sup>x</sup> - 6·2<sup>x-1</sup></b> ifadesinin değeri kaçtır?</p>
+      <div class="options"><span>A) 38</span><span>B) 42</span><span>C) 46</span><span>D) 50</span><span>E) 54</span></div>
+      <div class="solve-area"></div>
+    </div>
+
+    <div class="card soru">
+      <span class="kaynak">Karekök Yayınları</span>
+      <span class="tag">SORU 16</span>
+      <p><b>A = 8<sup>3</sup> + 2<sup>8</sup></b> sayısı veriliyor. Buna göre, A sayısının %25'i kaçtır?</p>
+      <div class="options"><span>A) 214</span><span>B) 200</span><span>C) 192</span><span>D) 184</span><span>E) 176</span></div>
+      <div class="solve-area"></div>
+    </div>
+
+    <div class="badge-row">
+      <svg class="medal" viewBox="0 0 100 100" xmlns="http://www.w3.org/2000/svg">
+        <polygon points="35,55 20,90 40,80 50,95 60,80 80,90 65,55" fill="#e2564c"/>
+        <circle cx="50" cy="45" r="35" fill="#ffd166" stroke="#e6a916" stroke-width="4"/>
+        <polygon points="50,22 56,38 73,38 59,48 64,65 50,55 36,65 41,48 27,38 44,38" fill="#fff" stroke="#e6a916" stroke-width="1.5"/>
+      </svg>
+      <p>Bu bölümün soruları videoda çözülmeye hazır! 🎥</p>
     </div>
   </section>
 
   <section class="topic" id="ax-esittir-1">
-    <h2 class="section-title">8. Sonuç Ne Zaman Hep 1 Olur? 🏁</h2>
-    <div class="card tanim">
-      <span class="tag">TANIM</span>
-      <p>Bazen bir üslü ifadenin sonucu tam olarak <b>1</b> çıkar. Bunun olabilmesi için üç özel durumdan biri gerçekleşmeli!</p>
-    </div>
-    <div class="card kural">
+    <h2 class="section-title">8. A<sup>x</sup> = 1 Olma Durumları</h2>
+    <div class="card bilgi">
       <span class="tag">KURAL</span>
       <p>A<sup>x</sup> = 1 eşitliği şu üç durumdan birinde sağlanır:</p>
-      <ol class="steps">
+      <ol style="margin:8px 0 0; padding-left:22px;">
         <li>A = 1 (1'in her kuvveti 1'dir, x ne olursa olsun)</li>
         <li>A = -1 ve x <b>çift</b> sayı ((-1)'in çift kuvveti 1'dir)</li>
         <li>x = 0 ve A ≠ 0 (sıfırdan farklı her sayının 0. kuvveti 1'dir)</li>
       </ol>
     </div>
-    <div class="card ornek">
-      <span class="tag">HADİ BİRLİKTE ÇÖZELİM 🔍</span>
+
+    <div class="card soru">
+      <span class="kaynak">Karekök Yayınları</span>
+      <span class="tag">SORU 17</span>
       <p>x, y tam sayı olmak üzere, <b>5<sup>x+y-3</sup> = 2<sup>x-y-5</sup></b> eşitliği veriliyor. x<sup>2</sup> + y<sup>2</sup> kaçtır?</p>
-      <ol class="steps">
-        <li>5 ve 2 farklı asal tabanlardır. Eşitliğin sağlanması için tek yol, her iki tarafın da 1'e eşit olması, yani her iki üssün de 0 olmasıdır.</li>
-        <li>x + y - 3 = 0 → x + y = 3</li>
-        <li>x - y - 5 = 0 → x - y = 5</li>
-        <li>Taraf tarafa toplarsak: 2x = 8 → x = 4, buradan y = 3 - 4 = -1</li>
-        <li>x<sup>2</sup> + y<sup>2</sup> = 16 + 1 = <b>17</b> 🎉</li>
-      </ol>
+      <div class="options"><span>A) 10</span><span>B) 12</span><span>C) 13</span><span>D) 15</span><span>E) 17</span></div>
+      <div class="solve-area"></div>
     </div>
-    <div class="card alistirma">
-      <span class="tag">SIRA SENDE! 💪</span>
-      <ol class="practice">
-        <li>(x-2)<sup>4</sup> = 1 eşitliğini sağlayan tam sayı x değerlerini bul.</li>
-        <li>3<sup>y-5</sup> = 1 eşitliğini sağlayan y değerini bul.</li>
-        <li>(2a+1)<sup>7</sup> = 1 eşitliğini sağlayan tam sayı a değerini bul.</li>
-      </ol>
-      <details class="answers"><summary>Cevapları Göster 👀</summary><div class="answer-text">1) x = 1 veya x = 3 &nbsp; 2) y = 5 &nbsp; 3) a = 0</div></details>
-    </div>
+
     <div class="badge-row">
       <svg class="medal" viewBox="0 0 100 100" xmlns="http://www.w3.org/2000/svg">
         <polygon points="35,55 20,90 40,80 50,95 60,80 80,90 65,55" fill="#e2564c"/>
-        <circle cx="50" cy="45" r="35" fill="#4ecdc4" stroke="#2a9d8f" stroke-width="4"/>
-        <polygon points="50,22 56,38 73,38 59,48 64,65 50,55 36,65 41,48 27,38 44,38" fill="#fff" stroke="#2a9d8f" stroke-width="1.5"/>
+        <circle cx="50" cy="45" r="35" fill="#ffd166" stroke="#e6a916" stroke-width="4"/>
+        <polygon points="50,22 56,38 73,38 59,48 64,65 50,55 36,65 41,48 27,38 44,38" fill="#fff" stroke="#e6a916" stroke-width="1.5"/>
       </svg>
-      <p>Son durağı da tamamladın! 🏁</p>
+      <p>Bu bölümün soruları videoda çözülmeye hazır! 🎥</p>
     </div>
   </section>
 
@@ -658,8 +566,8 @@
       <rect x="52" y="80" width="16" height="16" fill="#e6a916"/>
       <rect x="40" y="96" width="40" height="10" rx="3" fill="#e2564c"/>
     </svg>
-    <h2>Tebrikler, Kaşif! 🎉</h2>
-    <p>Üslü Sayılar macerasının tüm duraklarını tamamladın!</p>
+    <h2>Föy Tamamlandı! 🎉</h2>
+    <p>17 soru, videoda çözülmeyi bekliyor.</p>
   </div>
 
   <footer>
