@@ -1,0 +1,427 @@
+<title>Üslü Sayılar - Konu Anlatım Föyü</title>
+<style>
+  :root{
+    --yellow:#f6dd7e;
+    --yellow-border:#e0b93a;
+    --cream:#fdf3e0;
+    --cream-border:#d9b96b;
+    --ink:#1b4332;
+    --text:#2b2b2b;
+    --muted:#6b6b6b;
+    --green-bg:#e8f6ee;
+    --green-border:#4c9a6a;
+    --blue-bg:#eaf2fb;
+    --blue-border:#5b8fd1;
+  }
+  *{box-sizing:border-box;}
+  body{
+    font-family: Georgia, 'Times New Roman', serif;
+    color:var(--text);
+    max-width:800px;
+    margin:0 auto;
+    padding:24px 20px 60px;
+    line-height:1.5;
+    background:#fff;
+  }
+  h1.main-title{
+    text-align:center;
+    color:var(--ink);
+    font-size:2rem;
+    margin-bottom:4px;
+  }
+  p.subtitle{
+    text-align:center;
+    color:var(--muted);
+    margin-top:0;
+    font-style:italic;
+  }
+  nav.toc{
+    background:var(--cream);
+    border:1px solid var(--cream-border);
+    border-radius:12px;
+    padding:16px 24px;
+    margin:24px 0 36px;
+  }
+  nav.toc h2{
+    margin-top:0;
+    color:var(--ink);
+    font-size:1.1rem;
+  }
+  nav.toc ol{
+    columns:1;
+    padding-left:20px;
+    margin-bottom:0;
+  }
+  nav.toc a{
+    color:var(--text);
+    text-decoration:none;
+  }
+  nav.toc a:hover{ text-decoration:underline; }
+
+  section.topic{
+    margin-bottom:44px;
+    page-break-inside:avoid;
+  }
+  section.topic h2{
+    display:inline-block;
+    background:var(--yellow);
+    border:1px solid var(--yellow-border);
+    border-radius:10px;
+    padding:8px 20px;
+    color:var(--ink);
+    font-size:1.15rem;
+    margin-bottom:14px;
+  }
+
+  .box{
+    border:1px solid var(--cream-border);
+    background:var(--cream);
+    border-radius:10px;
+    padding:14px 18px;
+    margin-bottom:14px;
+    page-break-inside:avoid;
+  }
+  .box .label{
+    font-weight:bold;
+    color:var(--ink);
+    text-transform:uppercase;
+    font-size:0.78rem;
+    letter-spacing:0.04em;
+    margin-bottom:6px;
+    display:block;
+  }
+  .box.ornek{
+    background:var(--blue-bg);
+    border-color:var(--blue-border);
+  }
+  .box.alistirma{
+    background:var(--green-bg);
+    border-color:var(--green-border);
+  }
+
+  .formula{
+    font-size:1.15rem;
+    text-align:center;
+    margin:10px 0;
+  }
+  sup{ font-size:0.7em; }
+
+  .frac{
+    display:inline-flex;
+    flex-direction:column;
+    align-items:center;
+    vertical-align:middle;
+    margin:0 4px;
+    line-height:1.1;
+  }
+  .frac .num, .frac .den{
+    padding:0 4px;
+  }
+  .frac .num{
+    border-bottom:1.5px solid var(--text);
+  }
+
+  ol.steps{
+    margin:8px 0 4px 0;
+    padding-left:22px;
+  }
+  ol.steps li{ margin-bottom:4px; }
+
+  ol.practice{
+    margin:6px 0 10px 0;
+    padding-left:22px;
+  }
+  ol.practice li{ margin-bottom:6px; }
+
+  .answers{
+    font-size:0.9rem;
+    color:var(--muted);
+    border-top:1px dashed var(--green-border);
+    padding-top:8px;
+    margin-top:8px;
+  }
+
+  footer{
+    margin-top:50px;
+    padding-top:14px;
+    border-top:1px solid #ddd;
+    font-size:0.8rem;
+    color:var(--muted);
+    text-align:center;
+  }
+
+  @media print{
+    body{ padding:0 8mm; }
+    @page{ size:A4; margin:14mm; }
+    nav.toc{ page-break-after:always; }
+    a{ color:inherit; }
+  }
+</style>
+
+<h1 class="main-title">ÜSLÜ SAYILAR</h1>
+<p class="subtitle">Konu Anlatım Föyü</p>
+
+<nav class="toc">
+  <h2>İçindekiler</h2>
+  <ol>
+    <li><a href="#tanim">Üslü Sayının Tanımı</a></li>
+    <li><a href="#negatif-taban">Negatif Tabanlı Üslü Sayılar</a></li>
+    <li><a href="#negatif-us">Negatif Üslü Sayılar</a></li>
+    <li><a href="#ussun-ussu">Üssün Üssü</a></li>
+    <li><a href="#carpma-bolme-ayni-taban">Aynı Tabanda Çarpma - Bölme</a></li>
+    <li><a href="#carpma-bolme-ayni-us">Aynı Üste Çarpma - Bölme</a></li>
+    <li><a href="#toplama-cikarma">Toplama - Çıkarma</a></li>
+    <li><a href="#ax-esittir-1">A<sup>x</sup> = 1 Olma Durumları</a></li>
+  </ol>
+</nav>
+
+<section class="topic" id="tanim">
+  <h2>1. Üslü Sayının Tanımı</h2>
+  <div class="box">
+    <span class="label">Tanım</span>
+    a bir gerçel sayı ve n pozitif bir tam sayı olmak üzere, a<sup>n</sup> ifadesi, a sayısının kendisiyle n defa çarpılması anlamına gelir. a'ya <b>taban</b>, n'ye <b>üs (kuvvet)</b> denir.
+  </div>
+  <div class="box">
+    <span class="label">Kural</span>
+    <div class="formula">a<sup>n</sup> = a × a × a × ... × a &nbsp; (n tane)</div>
+  </div>
+  <div class="box ornek">
+    <span class="label">Çözümlü Örnek</span>
+    <b>2<sup>5</sup></b> ifadesinin değerini bulunuz.
+    <ol class="steps">
+      <li>2<sup>5</sup> = 2 × 2 × 2 × 2 × 2 (2, 5 kez kendisiyle çarpılır)</li>
+      <li>2 × 2 = 4, 4 × 2 = 8, 8 × 2 = 16, 16 × 2 = 32</li>
+      <li>Sonuç: <b>32</b></li>
+    </ol>
+  </div>
+  <div class="box alistirma">
+    <span class="label">Alıştırma</span>
+    <ol class="practice">
+      <li>3<sup>4</sup> = ?</li>
+      <li>(1/2)<sup>3</sup> = ?</li>
+      <li>10<sup>2</sup> = ?</li>
+    </ol>
+    <div class="answers">Cevaplar: 1) 81 &nbsp; 2) 1/8 &nbsp; 3) 100</div>
+  </div>
+</section>
+
+<section class="topic" id="negatif-taban">
+  <h2>2. Negatif Tabanlı Üslü Sayılar</h2>
+  <div class="box">
+    <span class="label">Tanım</span>
+    Taban negatif bir sayı olduğunda, eksi işaretinin parantez içinde olup olmaması sonucu değiştirir.
+  </div>
+  <div class="box">
+    <span class="label">Kural</span>
+    <div class="formula">(-a)<sup>n</sup>: n çift ise sonuç <b>pozitif</b>, n tek ise sonuç <b>negatif</b>tir.</div>
+    <div class="formula">-a<sup>n</sup> (parantezsiz): önce üs alınır, sonra başa eksi konur → sonuç n'nin tekliğine/çiftliğine bakmaksızın <b>üssü alınan sayının negatifidir</b>.</div>
+    Örnek: (-3)<sup>3</sup> = -27, (-3)<sup>4</sup> = +81 &nbsp;|&nbsp; -3<sup>3</sup> = -27, -3<sup>4</sup> = -81
+  </div>
+  <div class="box ornek">
+    <span class="label">Çözümlü Örnek</span>
+    <b>(-3<sup>2</sup>) - (-2<sup>0</sup>) + (-5)<sup>2</sup></b> işleminin sonucunu bulunuz.
+    <ol class="steps">
+      <li>-3<sup>2</sup> = -(3<sup>2</sup>) = -9 (parantez taban etrafında değil; önce üs alınır)</li>
+      <li>-2<sup>0</sup> = -(2<sup>0</sup>) = -1, önündeki eksi ile: -(-1) = +1</li>
+      <li>(-5)<sup>2</sup> = 25 (taban parantez içinde -5, çift üs → pozitif)</li>
+      <li>Toplam: -9 + 1 + 25 = <b>17</b></li>
+    </ol>
+  </div>
+  <div class="box alistirma">
+    <span class="label">Alıştırma</span>
+    <ol class="practice">
+      <li>(-2)<sup>4</sup> = ?</li>
+      <li>-2<sup>4</sup> = ?</li>
+      <li>(-4<sup>2</sup>) + (-3)<sup>3</sup> = ?</li>
+    </ol>
+    <div class="answers">Cevaplar: 1) 16 &nbsp; 2) -16 &nbsp; 3) -43</div>
+  </div>
+</section>
+
+<section class="topic" id="negatif-us">
+  <h2>3. Negatif Üslü Sayılar</h2>
+  <div class="box">
+    <span class="label">Tanım</span>
+    Negatif üslü bir ifade, tabanın çarpmaya göre tersi (resiprok) alınarak pozitif üsle yazılabilir.
+  </div>
+  <div class="box">
+    <span class="label">Kural</span>
+    <div class="formula">a<sup>-1</sup> = 1/a &nbsp;&nbsp;&nbsp; a<sup>-n</sup> = 1/a<sup>n</sup> &nbsp; (a ≠ 0)</div>
+    <div class="formula">(a/b)<sup>-1</sup> = b/a &nbsp;&nbsp;&nbsp; (a/b)<sup>-n</sup> = (b/a)<sup>n</sup></div>
+  </div>
+  <div class="box ornek">
+    <span class="label">Çözümlü Örnek</span>
+    m ≠ 0 olmak üzere, <b>(-m)<sup>5</sup> · (-m<sup>2</sup>) · (-m)<sup>-4</sup></b> ifadesini sadeleştiriniz.
+    <ol class="steps">
+      <li>(-m)<sup>5</sup> = -m<sup>5</sup> (üs tek, sonuç negatif)</li>
+      <li>(-m)<sup>-4</sup> = 1/(-m)<sup>4</sup> = 1/m<sup>4</sup> (üs çift, sonuç pozitif)</li>
+      <li>İfade: (-m<sup>5</sup>) · (-m<sup>2</sup>) · (1/m<sup>4</sup>) = (m<sup>5</sup> · m<sup>2</sup>) / m<sup>4</sup> (negatif × negatif = pozitif)</li>
+      <li>= m<sup>5+2-4</sup> = <b>m<sup>3</sup></b></li>
+    </ol>
+  </div>
+  <div class="box alistirma">
+    <span class="label">Alıştırma</span>
+    <ol class="practice">
+      <li>5<sup>-2</sup> = ?</li>
+      <li>(2/3)<sup>-2</sup> = ?</li>
+      <li>(-x)<sup>-3</sup> = ? (x ≠ 0)</li>
+    </ol>
+    <div class="answers">Cevaplar: 1) 1/25 &nbsp; 2) 9/4 &nbsp; 3) -1/x<sup>3</sup></div>
+  </div>
+</section>
+
+<section class="topic" id="ussun-ussu">
+  <h2>4. Üssün Üssü</h2>
+  <div class="box">
+    <span class="label">Kural</span>
+    <div class="formula">(a<sup>x</sup>)<sup>y</sup> = a<sup>x·y</sup></div>
+  </div>
+  <div class="box ornek">
+    <span class="label">Çözümlü Örnek</span>
+    <b>[4<sup>-2</sup>]<sup>-3</sup></b> ifadesini 2'nin kuvveti olarak yazınız.
+    <ol class="steps">
+      <li>[4<sup>-2</sup>]<sup>-3</sup> = 4<sup>(-2)·(-3)</sup> = 4<sup>6</sup></li>
+      <li>4 = 2<sup>2</sup> olduğundan: 4<sup>6</sup> = (2<sup>2</sup>)<sup>6</sup> = 2<sup>12</sup></li>
+      <li>Sonuç: <b>2<sup>12</sup></b></li>
+    </ol>
+  </div>
+  <div class="box alistirma">
+    <span class="label">Alıştırma</span>
+    <ol class="practice">
+      <li>(2<sup>3</sup>)<sup>4</sup> = ? (2'nin kuvveti olarak)</li>
+      <li>[(-3)<sup>2</sup>]<sup>3</sup> = ?</li>
+      <li>(x<sup>2</sup>)<sup>-3</sup> = ?</li>
+    </ol>
+    <div class="answers">Cevaplar: 1) 2<sup>12</sup> &nbsp; 2) 3<sup>6</sup> = 729 &nbsp; 3) x<sup>-6</sup> = 1/x<sup>6</sup></div>
+  </div>
+</section>
+
+<section class="topic" id="carpma-bolme-ayni-taban">
+  <h2>5. Aynı Tabanda Çarpma - Bölme</h2>
+  <div class="box">
+    <span class="label">Kural</span>
+    <div class="formula">a<sup>x</sup> · a<sup>y</sup> = a<sup>x+y</sup></div>
+    <div class="formula">a<sup>x</sup> / a<sup>y</sup> = a<sup>x-y</sup> &nbsp; (a ≠ 0)</div>
+  </div>
+  <div class="box ornek">
+    <span class="label">Çözümlü Örnek</span>
+    <b>8<sup>8</sup> · 4<sup>4</sup> / 2<sup>2</sup></b> işleminin sonucunu 2'nin kuvveti olarak bulunuz.
+    <ol class="steps">
+      <li>8 = 2<sup>3</sup>, 4 = 2<sup>2</sup> olduğundan: 8<sup>8</sup> = 2<sup>24</sup>, 4<sup>4</sup> = 2<sup>8</sup></li>
+      <li>İfade: 2<sup>24</sup> · 2<sup>8</sup> / 2<sup>2</sup> = 2<sup>24+8-2</sup></li>
+      <li>Sonuç: <b>2<sup>30</sup></b></li>
+    </ol>
+  </div>
+  <div class="box alistirma">
+    <span class="label">Alıştırma</span>
+    <ol class="practice">
+      <li>3<sup>5</sup> · 3<sup>-2</sup> = ?</li>
+      <li>9<sup>3</sup> / 3<sup>4</sup> = ?</li>
+      <li>2<sup>x</sup> = 3 ise 2<sup>2x</sup> = ?</li>
+    </ol>
+    <div class="answers">Cevaplar: 1) 3<sup>3</sup> = 27 &nbsp; 2) 3<sup>2</sup> = 9 &nbsp; 3) 9 (çünkü 2<sup>2x</sup> = (2<sup>x</sup>)<sup>2</sup>)</div>
+  </div>
+</section>
+
+<section class="topic" id="carpma-bolme-ayni-us">
+  <h2>6. Aynı Üste Çarpma - Bölme</h2>
+  <div class="box">
+    <span class="label">Kural</span>
+    <div class="formula">a<sup>x</sup> · b<sup>x</sup> = (a·b)<sup>x</sup></div>
+    <div class="formula">(a/b)<sup>x</sup> = a<sup>x</sup> / b<sup>x</sup></div>
+  </div>
+  <div class="box ornek">
+    <span class="label">Çözümlü Örnek</span>
+    Bir taşıma şirketine gelen özdeş 5 kolinin her birinde 36 kutu, her kutuda 45 makara, her makarada 100 metre iplik vardır. Bu kolilerde toplam kaç metre iplik vardır?
+    <ol class="steps">
+      <li>Toplam iplik = 5 × 36 × 45 × 100</li>
+      <li>Asal çarpanlarına ayıralım: 5 = 5, 36 = 2<sup>2</sup>·3<sup>2</sup>, 45 = 3<sup>2</sup>·5, 100 = 2<sup>2</sup>·5<sup>2</sup></li>
+      <li>Çarpım: 2<sup>2+2</sup> · 3<sup>2+2</sup> · 5<sup>1+1+2</sup> = 2<sup>4</sup> · 3<sup>4</sup> · 5<sup>4</sup></li>
+      <li>Aynı üslü olduklarından tabanlar çarpılır: (2·3·5)<sup>4</sup> = <b>30<sup>4</sup></b> metre</li>
+    </ol>
+  </div>
+  <div class="box alistirma">
+    <span class="label">Alıştırma</span>
+    <ol class="practice">
+      <li>2<sup>5</sup> · 5<sup>5</sup> = ? (10'un kuvveti olarak)</li>
+      <li>6<sup>3</sup> / 2<sup>3</sup> = ?</li>
+      <li>4<sup>3</sup> · 25<sup>3</sup> = ? (10'un kuvveti olarak)</li>
+    </ol>
+    <div class="answers">Cevaplar: 1) 10<sup>5</sup> &nbsp; 2) 3<sup>3</sup> = 27 &nbsp; 3) 100<sup>3</sup> = 10<sup>6</sup></div>
+  </div>
+</section>
+
+<section class="topic" id="toplama-cikarma">
+  <h2>7. Toplama - Çıkarma</h2>
+  <div class="box">
+    <span class="label">Kural</span>
+    Üslü ifadelerde toplama/çıkarma yapabilmek için taban ve üslerin <b>aynı</b> olması gerekir; bu durumda ortak çarpan parantezine alınır:
+    <div class="formula">a<sup>n</sup> + a<sup>n</sup> + ... + a<sup>n</sup> (k tane) = k · a<sup>n</sup></div>
+    Taban veya üsler farklıysa doğrudan toplama/çıkarma <b>yapılamaz</b>; ancak sayılar aynı asal tabana çevrilebiliyorsa, ortak çarpan parantezine alınarak işlem yapılabilir.
+    <br>Örnek: 3<sup>7</sup>+3<sup>7</sup>+3<sup>7</sup>+3<sup>7</sup> = 4·3<sup>7</sup> &nbsp;|&nbsp; 5<sup>4</sup> - 3<sup>5</sup>: farklı asal tabanlar olduğundan sadeleştirilemez.
+  </div>
+  <div class="box ornek">
+    <span class="label">Çözümlü Örnek 1</span>
+    <b>2<sup>x+2</sup> - 2<sup>x+1</sup> + 2<sup>x</sup></b> ifadesini sadeleştiriniz.
+    <ol class="steps">
+      <li>Ortak çarpan 2<sup>x</sup> parantezine alınır: 2<sup>x</sup>(2<sup>2</sup> - 2<sup>1</sup> + 1)</li>
+      <li>2<sup>x</sup>(4 - 2 + 1) = 2<sup>x</sup> · 3</li>
+      <li>Sonuç: <b>3 · 2<sup>x</sup></b></li>
+    </ol>
+  </div>
+  <div class="box ornek">
+    <span class="label">Çözümlü Örnek 2</span>
+    <b>8<sup>3</sup> + 4<sup>4</sup></b> ifadesini 2'nin kuvveti cinsinden yazıp sadeleştiriniz.
+    <ol class="steps">
+      <li>8<sup>3</sup> = 2<sup>9</sup>, 4<sup>4</sup> = 2<sup>8</sup> (ortak tabana çevrildi)</li>
+      <li>2<sup>9</sup> + 2<sup>8</sup> = 2<sup>8</sup>(2 + 1) = 3 · 2<sup>8</sup></li>
+      <li>Sonuç: <b>3 · 2<sup>8</sup> = 768</b></li>
+    </ol>
+  </div>
+  <div class="box alistirma">
+    <span class="label">Alıştırma</span>
+    <ol class="practice">
+      <li>5<sup>7</sup> + 5<sup>7</sup> + 5<sup>7</sup> = ?</li>
+      <li>3<sup>x</sup> + 3<sup>x</sup> + 3<sup>x</sup> + 3<sup>x</sup> + 3<sup>x</sup> = ?</li>
+      <li>9<sup>2</sup> - 3<sup>3</sup> işlemi sadeleştirilebilir mi? Sadeleştirip sonucu bulunuz.</li>
+    </ol>
+    <div class="answers">Cevaplar: 1) 3 · 5<sup>7</sup> &nbsp; 2) 5 · 3<sup>x</sup> &nbsp; 3) Evet; 9<sup>2</sup> = 3<sup>4</sup> olduğundan 3<sup>4</sup> - 3<sup>3</sup> = 3<sup>3</sup>(3-1) = 27 · 2 = 54</div>
+  </div>
+</section>
+
+<section class="topic" id="ax-esittir-1">
+  <h2>8. A<sup>x</sup> = 1 Olma Durumları</h2>
+  <div class="box">
+    <span class="label">Kural</span>
+    A<sup>x</sup> = 1 eşitliği üç durumdan birinde sağlanır:
+    <ol class="steps">
+      <li>A = 1 (1'in her kuvveti 1'dir, x herhangi bir sayı olabilir)</li>
+      <li>A = -1 ve x <b>çift</b> sayı ((-1)'in çift kuvveti 1'dir)</li>
+      <li>x = 0 ve A ≠ 0 (sıfırdan farklı her sayının 0. kuvveti 1'dir)</li>
+    </ol>
+  </div>
+  <div class="box ornek">
+    <span class="label">Çözümlü Örnek</span>
+    x, y tam sayı olmak üzere, <b>5<sup>x+y-3</sup> = 2<sup>x-y-5</sup></b> eşitliği veriliyor. x<sup>2</sup> + y<sup>2</sup> kaçtır?
+    <ol class="steps">
+      <li>5 ve 2 birbirinden farklı asal tabanlardır. Eşitliğin sağlanabilmesi için tek yol, her iki tarafın da 1'e eşit olması, yani her iki üssün de 0 olmasıdır.</li>
+      <li>x + y - 3 = 0 → x + y = 3</li>
+      <li>x - y - 5 = 0 → x - y = 5</li>
+      <li>Taraf tarafa toplarsak: 2x = 8 → x = 4, buradan y = 3 - 4 = -1</li>
+      <li>x<sup>2</sup> + y<sup>2</sup> = 16 + 1 = <b>17</b></li>
+    </ol>
+  </div>
+  <div class="box alistirma">
+    <span class="label">Alıştırma</span>
+    <ol class="practice">
+      <li>(x-2)<sup>4</sup> = 1 eşitliğini sağlayan tam sayı x değerlerini bulunuz.</li>
+      <li>3<sup>y-5</sup> = 1 eşitliğini sağlayan y değerini bulunuz.</li>
+      <li>(2a+1)<sup>7</sup> = 1 eşitliğini sağlayan tam sayı a değerini bulunuz.</li>
+    </ol>
+    <div class="answers">Cevaplar: 1) x = 1 veya x = 3 (taban 1 ya da çift üs olduğundan -1 olabilir) &nbsp; 2) y = 5 (taban 3 sabit; 1 ya da -1 olamayacağından üs 0 olmalı) &nbsp; 3) a = 0 (üs 7 tek olduğundan taban yalnızca 1 olabilir)</div>
+  </div>
+</section>
+
+<footer>
+  Bu föy, "Üslü Sayılar Konu Anlatım" kaynak sunumundan (ÜçDörtBeş Yayınları ve Karekök Yayınları soruları) yararlanılarak hazırlanmıştır.
+</footer>
